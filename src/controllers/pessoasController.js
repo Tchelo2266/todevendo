@@ -10,7 +10,24 @@ const createPessoas = async(request, response) => {
     return response.status(201).json(createdPessoas);
 };
 
+const updatePessoas = async(request, response) => {
+    const {id} = request.params;
+
+    await pessoasModel.updatePessoas(id, request.body);
+    return response.status(204).json();
+};
+
+const deletePessoas = async(request, response) => {
+    const {id} = request.params;
+
+    await pessoasModel.deletePessoas(id);
+
+    return response.status(204).json();
+}
+
 module.exports = {
     getAllPessoas,
-    createPessoas
+    createPessoas,
+    deletePessoas,
+    updatePessoas
 };

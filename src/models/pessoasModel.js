@@ -13,10 +13,26 @@ const createPessoas = async(pessoa) => {
 
     const [createdPessoas] = await connection.execute(query, [nome, status]);
     
-    return createdPessoas;
+    return {insertId: createdPessoas.insertId};
 };
+
+const deletePessoas = async (id) => {
+    const removedPessoas = await connection.execute('DELETE FROM pessoas WHERE id = ?', [id]);
+    return removedPessoas;
+};
+
+const updatePessoas = async (id, pessoas) => {
+    const {nome, status} = pessoas;    
+    const query = 'UPDATE pessoas SET nome = ?, status = ? WHERE id = ?';
+
+    const [updatePessoa] = await connection.execute(query, [nome, status, id]);
+
+    return updatePessoa;
+}
 
 module.exports = {
     getAll,
-    createPessoas
+    createPessoas,
+    deletePessoas,
+    updatePessoas
 };
