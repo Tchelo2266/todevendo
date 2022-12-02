@@ -1,4 +1,8 @@
-const pessoasModel = require('../models/pessoasModel')
+const pessoasModel = require('../models/pessoasModel');
+
+const getPessoasView = (req, res) => {
+    res.render('pessoas.ejs');
+}
 
 const getAllPessoas = async(request, response) => {
     const pessoas = await pessoasModel.getAll();
@@ -11,6 +15,7 @@ const createPessoas = async(request, response) => {
 };
 
 module.exports = {
+    getPessoasView,
     getAllPessoas,
     createPessoas
 };
