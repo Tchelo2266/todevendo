@@ -1,7 +1,7 @@
 const pessoasModel = require('../models/pessoasModel');
 
 const getPessoasView = (req, res) => {
-    res.render('pessoas.ejs');
+    res.render('cadastroPessoas.ejs');
 }
 
 const getAllPessoas = async(request, response) => {
