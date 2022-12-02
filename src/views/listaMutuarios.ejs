@@ -1,0 +1,58 @@
+<br>
+<div class="row">
+    <div class="col-auto float-left">
+        <h1>Mutuários</h1>
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <div class="col-auto float-left">
+        <a href="/cadastroMutuario" class="btn btn-outline-dark float-right"><i class="bi bi-plus-square"></i> Novo mutuário</a>
+    </div>
+    <div class="col-auto float-right ms-auto">
+        <a href="/" class="btn btn-success float-right">Voltar</a>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Crédito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(mutuarios.length > 0) { %>
+                    <% for(let mutuario of mutuarios) { %>
+                        <tr>
+                            <th scope="row">
+                                <%= mutuario.number %>
+                            </th>
+                            <td>
+                                R$
+                                <%= mutuario.balance %>.00
+                            </td>
+                            <td>
+                                <%= mutuario.customer %>
+                            </td>
+                            <!-- <td><%= bankAccount.address %></td> -->
+                            <td>
+                                <a href="/viewBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-arrows-fullscreen"></i></a>
+                                <a href="/deleteBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    <% } else { %>
+                        <tr>
+                            <td>Nenhum mutuário foi encontrado</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<br>
+<div class="card">
+    <div class="card-header">
+        <h4 class="font-weight-bold">Cadastro mutuário</h4>
+    </div>
+    <div class="card-body">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="firstname" class="col-form-label">Nome: </label>
+                        <input type="text" class="form-control" name="nome"  placeholder="Informe o nome" id="nome">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="status" class="col-form-label">Status: </label>
+                        <select class="form-select" aria-label="Default select example" name="status" id="status">
+                            <option value="">Selecione</option>
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <br>
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="/listaMutuarios" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,7 +1,13 @@
 const pessoasModel = require('../models/pessoasModel');
 
-const getPessoasView = (req, res) => {
-    res.render('cadastroPessoas.ejs');
+const getCredoresView = (req, res) => {
+    // res.render('cadastroCredor.ejs');
+    res.render('listaCredor.ejs', {credores: []});
+}
+
+const cadastroCredorView = (req, res) => {
+    // res.render('cadastroCredor.ejs');
+    res.render('cadastroCredor.ejs');
 }
 
 const getAllPessoas = async(request, response) => {
@@ -9,7 +15,8 @@ const getAllPessoas = async(request, response) => {
     return response.status(200).json(pessoas);
 };
 
-const createPessoas = async(request, response) => {
+const createCredor = async(request, response) => {
+    //Funcionando
     const createdPessoas = await pessoasModel.createPessoas(request.body);
     return response.status(201).json(createdPessoas);
 };
@@ -30,9 +37,10 @@ const deletePessoas = async(request, response) => {
 }
 
 module.exports = {
-    getPessoasView,
+    getCredoresView,
     getAllPessoas,
-    createPessoas,
+    createCredor,
     deletePessoas,
-    updatePessoas
+    updatePessoas,
+    cadastroCredorView
 };
