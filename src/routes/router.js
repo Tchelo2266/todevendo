@@ -11,5 +11,7 @@ const pessoasController = require('../controllers/pessoasController');
 router.get('/viewPessoas', pessoasController.getPessoasView);
 router.get('/pessoas', pessoasController.getAllPessoas);
 router.post('/pessoas', pessoasController.createPessoas);
+router.post('/deletePessoas/:id', pessoasController.deletePessoas);
+router.put('/pessoas/:id', pessoasController.updatePessoas);
 
 module.exports = router;
