@@ -4,21 +4,43 @@
         <h4 class="font-weight-bold">Cadastro dívida</h4>
     </div>
     <div class="card-body">
-        <form action="" method="post">
+        <form action="/cadastroDivida" method="post">
             <div class="row">
-                <div class="col-6">
+                <div class="col-3">
                     <div class="form-group">
-                        <label for="firstname" class="col-form-label">Nome: </label>
-                        <input type="text" class="form-control" name="nome"  placeholder="Informe o nome" id="nome">
+                        <label for="mutuario" class="col-form-label">Mutuário: </label>
+                        <select class="form-select" aria-label="Default select example" name="mutuario" id="mutuario">
+                            <option value="">Selecione</option>
+                            <% for(let mutuario of dados.mutuarios) { %>
+                                <option value="<%= mutuario.id %>"><%= mutuario.nome %></option>
+                            <% } %>
+                        </select>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-3">
                     <div class="form-group">
-                        <label for="status" class="col-form-label">Status: </label>
-                        <select class="form-select" aria-label="Default select example" name="status" id="status">
+                        <label for="valor" class="col-form-label">Valor: </label>
+                        <input type="text" class="form-control" name="valor"  placeholder="Informe o valor" id="valor">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="credor" class="col-form-label">Credor: </label>
+                        <select class="form-select" aria-label="Default select example" name="credor" id="credor">
                             <option value="">Selecione</option>
-                            <option value="1">Ativo</option>
-                            <option value="0">Inativo</option>
+                            <% for(let credor of dados.credores) { %>
+                                <option value="<%= credor.id %>"><%= credor.nome %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="status" class="col-form-label">Fixa? </label>
+                        <select class="form-select" aria-label="Default select example" name="fixa" id="fixa">
+                            <option value="">Selecione</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
                         </select>
                     </div>
                 </div>

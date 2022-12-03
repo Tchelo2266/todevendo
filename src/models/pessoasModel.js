@@ -1,15 +1,16 @@
 const connection = require('../startup/connection');
 
 const getAll = async() => {
-    const [pessoas] = await connection.execute("SELECT * FROM pessoas");
+    const [pessoas] = await connection.execute("SELECT * FROM credor");
+    // console.log("pessoas",pessoas);
     return pessoas;
 };
 
 const createPessoas = async(pessoa) => {
     const { nome } = pessoa;
     const { status } = pessoa;
-    
-    const query = 'INSERT INTO pessoas(nome, status) VALUES (?, ?)';
+
+    const query = 'INSERT INTO credor(nome, status) VALUES (?, ?)';
 
     const [createdPessoas] = await connection.execute(query, [nome, status]);
     
@@ -17,13 +18,13 @@ const createPessoas = async(pessoa) => {
 };
 
 const deletePessoas = async (id) => {
-    const removedPessoas = await connection.execute('DELETE FROM pessoas WHERE id = ?', [id]);
+    const removedPessoas = await connection.execute('DELETE FROM credor WHERE id = ?', [id]);
     return removedPessoas;
 };
 
 const updatePessoas = async (id, pessoas) => {
     const {nome, status} = pessoas;    
-    const query = 'UPDATE pessoas SET nome = ?, status = ? WHERE id = ?';
+    const query = 'UPDATE credor SET nome = ?, status = ? WHERE id = ?';
 
     const [updatePessoa] = await connection.execute(query, [nome, status, id]);
 

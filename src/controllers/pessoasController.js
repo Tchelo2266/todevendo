@@ -1,13 +1,13 @@
 const pessoasModel = require('../models/pessoasModel');
 
-const getCredoresView = (req, res) => {
-    // res.render('cadastroCredor.ejs');
-    res.render('listaCredor.ejs', {credores: []});
+const getCredoresView = async(req, res) => {
+    const credores = await pessoasModel.getAll();
+    // console.log(credores);
+    res.render('listaCredor.ejs', {credores: credores});
 }
 
 const cadastroCredorView = (req, res) => {
-    // res.render('cadastroCredor.ejs');
-    res.render('cadastroCredor.ejs');
+    res.render('cadastroCredor.ejs', {credor: {}}   );
 }
 
 const getAllPessoas = async(request, response) => {
@@ -15,10 +15,11 @@ const getAllPessoas = async(request, response) => {
     return response.status(200).json(pessoas);
 };
 
-const createCredor = async(request, response) => {
+const createCredor = (request, response) => {
     //Funcionando
-    const createdPessoas = await pessoasModel.createPessoas(request.body);
-    return response.status(201).json(createdPessoas);
+    const createdPessoas =  pessoasModel.createPessoas(request.body);
+    // return response.status(201).json(createdPessoas);
+    response.redirect('/listaCredor');
 };
 
 const updatePessoas = async(request, response) => {

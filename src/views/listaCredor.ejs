@@ -19,9 +19,10 @@
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr>
+                    <th scope="col">Id</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Crédito</th>
+                    <!-- <th scope="col">Crédito</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,19 +30,13 @@
                     <% for(let credor of credores) { %>
                         <tr>
                             <th scope="row">
-                                <%= credor.number %>
+                                <%= credor.id %>
                             </th>
                             <td>
-                                R$
-                                <%= credor.balance %>.00
+                                <%= credor.nome %>
                             </td>
                             <td>
-                                <%= credor.customer %>
-                            </td>
-                            <!-- <td><%= bankAccount.address %></td> -->
-                            <td>
-                                <a href="/viewBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-arrows-fullscreen"></i></a>
-                                <a href="/deleteBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-trash"></i></a>
+                                <%= credor.status %>
                             </td>
                         </tr>
                         <% } %>

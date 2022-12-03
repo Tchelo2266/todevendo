@@ -29,19 +29,13 @@
                     <% for(let mutuario of mutuarios) { %>
                         <tr>
                             <th scope="row">
-                                <%= mutuario.number %>
+                                <%= mutuario.id %>
                             </th>
                             <td>
-                                R$
-                                <%= mutuario.balance %>.00
+                                <%= mutuario.nome %>
                             </td>
                             <td>
-                                <%= mutuario.customer %>
-                            </td>
-                            <!-- <td><%= bankAccount.address %></td> -->
-                            <td>
-                                <a href="/viewBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-arrows-fullscreen"></i></a>
-                                <a href="/deleteBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-trash"></i></a>
+                                <%= mutuario.status %>
                             </td>
                         </tr>
                         <% } %>

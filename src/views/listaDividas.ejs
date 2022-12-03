@@ -19,31 +19,39 @@
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr>
+                    <th scope="col">Id</th>
                     <th scope="col">Devedor</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Credor</th>
                     <th scope="col">Quando fez</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col">Dar baixa</th>
                 </tr>
             </thead>
             <tbody>
                 <% if(dividas.length > 0) { %>
                     <% for(let divida of dividas) { %>
                         <tr>
-                            <th scope="row">
-                                <%= divida.number %>
+                            <th>
+                                <%= divida.id %>
+                            </th>
+                            <th>
+                                <%= divida.devedor %>
                             </th>
                             <td>
-                                R$
-                                <%= divida.balance %>.00
+                                <%= divida.valor %>
                             </td>
                             <td>
-                                <%= divida.customer %>
+                                <%= divida.credor %>
                             </td>
-                            <!-- <td><%= bankAccount.address %></td> -->
                             <td>
-                                <a href="/viewBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-arrows-fullscreen"></i></a>
-                                <a href="/deleteBankAccount/<%= bankAccount._id %>" class="btn btn-sm btn-warning"><i class="bi bi-trash"></i></a>
+                                <%= divida.quando_fez.toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <% if(divida.ativa != 0) { %>
+                                <a href="/baixaDivida/<%= divida.id  %>" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-arrow-down"></i></a>
+                                <% } else{ %>
+                                    <b>Dívida paga!</b>
+                                <% } %>
                             </td>
                         </tr>
                         <% } %>

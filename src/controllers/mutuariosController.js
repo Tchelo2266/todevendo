@@ -1,11 +1,12 @@
 const mutuariosModel = require('../models/mutuariosModel');
 
-const getMutuariosView = (req, res) => {
-    res.render('listaMutuarios.ejs', {mutuarios: []});
+const getMutuariosView = async(req, res) => {
+    const mutuarios = await mutuariosModel.getAll();
+    res.render('listaMutuarios.ejs', {mutuarios: mutuarios});
 }
 
 const cadastroMutuariosView = (req, res) => {
-    res.render('cadastroMutuario.ejs', {mutuarios: []});
+    res.render('cadastroMutuario.ejs', {mutuario: {}});
 }
 
 const getAllMutuarios = async(request, response) => {
@@ -13,9 +14,10 @@ const getAllMutuarios = async(request, response) => {
     return response.status(200).json(mutuarios);
 };
 
-const createMutuario = async(request, response) => {
-    const createdMutuarios = await mutuariosModel.createMutuario(request.body);
-    return response.status(201).json(createdMutuarios);
+const createMutuario = (request, response) => {
+    const createdMutuarios =  mutuariosModel.createMutuario(request.body);
+    // return response.status(201).json(createdMutuarios);
+    response.redirect('/listaMutuarios');
 };
 
 const updateMutuario = async(request, response) => {
